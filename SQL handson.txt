@@ -1,0 +1,124 @@
+MYSQL HANDSON
+CREATE TABLE user(EMPNO numeric(5),ProjId varchar(5),LastName char(30),FirstName char(30),HireDate date,Language Char(15),TaskNo numeric(2),Privilege char(25));
+ INSERT INTO user VALUES(201,'NPR','Gupta','Saurav','1995-01-01','VB',52,'Secret');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO user VALUES(390,'KCW','Ghosh','Pinky','1993-01-05','Java',11,'Top Secret');
+Query OK, 1 row affected (0.06 sec)
+
+mysql>  INSERT INTO user VALUES(789,'Rnc','Agarwal','Praveen','1998-08-31','VB',11,'Secret');
+Query OK, 1 row affected (0.06 sec)
+
+mysql>  INSERT INTO user VALUES(134,'TIPPS','Chaudhury','Supriyo','1995-07-15','C++',52,'Secret');
+Query OK, 1 row affected (0.10 sec)
+
+mysql>  INSERT INTO user VALUES(896,'KCW','Jhansi','Ranjit','1997-06-15','Java',10,'Top Secret');
+Query OK, 1 row affected (0.05 sec)
+
+mysql>  INSERT INTO user VALUES(345,'TIPPS','John','Peter','1999-11-15','Java',52,'     ');
+Query OK, 1 row affected (0.05 sec)
+
+mysql>  INSERT INTO user VALUES(563,'NITTS','Anderson','Andy','1994-08-15','C++',89,'Confidential');
+Query OK, 1 row affected (0.06 sec)
+ 201 | NPR    | Gupta     | Saurav    | 1995-01-01 | VB       |     52 | Secret       |
+|   390 | KCW    | Ghosh     | Pinky     | 1993-01-05 | Java     |     11 | Top Secret   |
+|   789 | Rnc    | Agarwal   | Praveen   | 1998-08-31 | VB       |     11 | Secret       |
+|   134 | TIPPS  | Chaudhury | Supriyo   | 1995-07-15 | C++      |     52 | Secret       |
+|   896 | KCW    | Jhansi    | Ranjit    | 1997-06-15 | Java     |     10 | Top Secret   |
+|   345 | TIPPS  | John      | Peter     | 1999-11-15 | Java     |     52 |              |
+|   563 | NITTS  | Anderson  | Andy      | 1994-08-15 | C++      |     89 | Confidential |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+14 rows in set (0.03 sec)
+
+2)
+CREATE TABLE weather(City char(50),State char(50),High numeric(10),Low numeric(10));
+Query OK, 0 rows affected (2.03 sec)
+mysql> describe weather;
++-------+---------------+------+-----+---------+-------+
+| Field | Type          | Null | Key | Default | Extra |
++-------+---------------+------+-----+---------+-------+
+| City  | char(50)      | YES  |     | NULL    |       |
+| State | char(50)      | YES  |     | NULL    |       |
+| High  | decimal(10,0) | YES  |     | NULL    |       |
+| Low   | decimal(10,0) | YES  |     | NULL    |       |
++-------+---------------+------+-----+---------+-------+
+4 rows in set (0.07 sec)
+
+mysql> INSERT INTO weather VALUES('Calcutta','West Bengal',105,90);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO weather VALUES('Trivandrum','Kerala',101,92);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO weather VALUES('Mumbai','Maharastra',88,69);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO weather VALUES('Banglore','Karnataka',77,60);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO weather VALUES('New Delhi','     ',80,72);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from weather;
++------------+-------------+------+------+
+| City       | State       | High | Low  |
++------------+-------------+------+------+
+| Calcutta   | West Bengal |  105 |   90 |
+| Trivandrum | Kerala      |  101 |   92 |
+| Mumbai     | Maharastra  |   88 |   69 |
+| Banglore   | Karnataka   |   77 |   60 |
+| New Delhi  |             |   80 |   72 |
++------------+-------------+------+------+
+5 rows in set (0.38 sec)
+
+3)  CREATE TABLE books(BookId numeric(10),Title char(50),TopicId varchar(50),PublisherName char(50),PlaceOfPublication char(50),Price numeric(10),PurchaseDate date,ShelfNo varchar(50));
+Query OK, 0 rows affected (1.06 sec)
+
+mysql> describe books;
++--------------------+---------------+------+-----+---------+-------+
+| Field              | Type          | Null | Key | Default | Extra |
++--------------------+---------------+------+-----+---------+-------+
+| BookId             | decimal(10,0) | YES  |     | NULL    |       |
+| Title              | char(50)      | YES  |     | NULL    |       |
+| TopicId            | varchar(50)   | YES  |     | NULL    |       |
+| PublisherName      | char(50)      | YES  |     | NULL    |       |
+| PlaceOfPublication | char(50)      | YES  |     | NULL    |       |
+| Price              | decimal(10,0) | YES  |     | NULL    |       |
+| PurchaseDate       | date          | YES  |     | NULL    |       |
+| ShelfNo            | varchar(50)   | YES  |     | NULL    |       |
+
++--------------------+---------------+------+-----+------       
+INSERT INTO books(BookId,Title,TopicId,PublisherName,PlaceOfPublication,Price,PurchaseDate,ShelfNo)
+    ->     ->     ->  VALUES(8293,'DBMS',DB1,'Prentice Hall','Mumbai',255,'1995-01-01','S11'),
+    ->     ->   (5645,'DBMS',DB1,'Pearson Education','Mumbai',655,'1993-01-05','S12'),
+    -> (6565,'C',C1,'TMH','Mumbai',840,'1998-31-08','S66'),
+    ->  (6567,'C++',Cplus1,'ABC Publishers','Delhi',300,'1995-07-15','S77'),
+    -> (4576,'JAVA',Java1,'Guru Govind Publications','Delhi',500,'1997-06-15','S87'),
+    -> (3433,'OOPS',OOPS1,'Dave Publishers','Pune',600,'1999-11-15','S56'),
+    ->  (4655,'SAD',SAD1,'Sajan Publications','Cochin',700,'1994-08-15','S76');
+4)i) UPDATE user
+    -> SET ProjId='NITTS',Language='C++'
+    -> WHERE ProjId='NPR';
+ 201 | NITTS  | Gupta     | Saurav    | 1995-01-01 | C++      |     52 | Secret       |
+|   390 | KCW    | Ghosh     | Pinky     | 1993-01-05 | Java     |     11 | Top Secret   |
+|   789 | Rnc    | Agarwal   | Praveen   | 1998-08-31 | VB       |     11 | Secret       |
+|   134 | TIPPS  | Chaudhury | Supriyo   | 1995-07-15 | C++      |     52 | Secret       |
+|   896 | KCW    | Jhansi    | Ranjit    | 1997-06-15 | Java     |     10 | Top Secret   |
+|   345 | TIPPS  | John      | Peter     | 1999-11-15 | Java     |     52 |              |
+|   563 | NITTS  | Anderson  | Andy      | 1994-08-15 | C++      |     89 | Confidential |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+14 rows in set (0.00 sec)
+ii)
+ DELETE from user
+    -> WHERE FirstName='Supriyo';
+ 201 | NITTS  | Gupta    | Saurav    | 1995-01-01 | C++      |     52 | Secret       |
+|   390 | KCW    | Ghosh    | Pinky     | 1993-01-05 | Java     |     11 | Top Secret   |
+|   789 | Rnc    | Agarwal  | Praveen   | 1998-08-31 | VB       |     11 | Secret       |
+|   896 | KCW    | Jhansi   | Ranjit    | 1997-06-15 | Java     |     10 | Top Secret   |
+|   345 | TIPPS  | John     | Peter     | 1999-11-15 | Java     |     52 |              |
+|   563 | NITTS  | Anderson | Andy      | 1994-08-15 | C++      |     89 | Confidential |
++-------+--------+----------+-----------+------------+----------+--------+--------------+
+12 rows in set (0.04 sec)
+iii)DELETE FROM weather;
+
+
